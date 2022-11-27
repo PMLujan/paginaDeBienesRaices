@@ -4,14 +4,16 @@
 .barra{
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding-top: 2rem;
     @include tablet{
         flex-direction: row;
         justify-content: space-between;
     }
 }
+
 .navegacion{
-    align-items: center;
+    align-items: center;  
     a{
         color: v.$blanco;
         text-decoration: none;
@@ -30,5 +32,30 @@
         &:hover{
             color: v.$verde;
         }
+    }
+}
+@media (max-width: 768px){
+    .navegacion{
+        display: none;
+    }
+}
+
+/**Menu hamburguesa**/
+
+@include tablet{
+    .menu-hamburguesa{
+        display: none;
+    }
+}
+.menu-hamburguesa{
+    img{
+        width: 4rem;
+    }
+}
+
+/**JS**/
+@media (max-width: 768px){
+    .mostrar{
+        display: block;
     }
 }
