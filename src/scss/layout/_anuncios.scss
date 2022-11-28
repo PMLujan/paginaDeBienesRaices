@@ -9,6 +9,7 @@
 .anuncio{
     background-color: lighten($color: $gris, $amount: 5);
     border: 1px solid darken($color: $gris, $amount: 5);
+    margin-bottom: 1rem;
     .contenido-anuncio{
         padding: 1rem;
     }
