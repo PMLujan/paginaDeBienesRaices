@@ -16,4 +16,25 @@
         .iconoAnuncios{
             filter: invert(100%);
         }
+        .texto-nosotros{
+            blockquote{
+                color: $amarillo;
+            }
+        }
+        .resumen-propiedad{
+            .precio{
+                color: $verde;
+            }
+        }
+        .entrada-blog{
+            background-color: $grisOscuro;
+        }
+        .formulario{
+            legend{
+                color: $amarillo
+            }
+            label{
+                color: $blanco;
+            }
+        }
 }
