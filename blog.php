@@ -1,36 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./build/css/app.css">
-    <title>Blog</title>
-</head>
-<body>
- <!-- COMIENZO DEL HEADER -->
-   <header class="header">
-        <div class="contenedor contenido-header">
-            <div class="barra">
-                <a href="index.html">
-                    <img src="./build/img/logo.svg" alt="logo">
-                </a>
-                <div class="menu-hamburguesa">
-                    <img src="build/img/barras.svg" alt="Icono menu responsivo">
-                </div>
-                <div class="derecha">
-                    <img class="dark-mode-boton" src="./build/img/dark-mode.svg" alt="Icono dark mode">
-                        <nav class="navegacion">
-                            <a href="nosotros.html">Nosotros</a>
-                            <a href="anuncios.html">Anuncios</a>
-                            <a href="blog.html">Blog</a>
-                        <a href="contacto.html">Contacto</a>
-                        </nav>
-                </div>
-            </div><!--fin del nav-->
-        </div>
-   </header>  <!--fin de header-->
+<?php
 
+require './includes/funciones.php';
+incluirTemplate('header');
+
+?>
 
    <main class="contenedor contenido-centrado">
         <h1>Nuestro Blog</h1>
@@ -43,7 +16,7 @@
                 </picture>
             </div>
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="entrada.php">
                     <h4>Terraza en el techo de tu casa</h4>
                     <p>Escrito el . <span class="fecha">24/11/2022</span> por : <span class="fecha">Admin</span></p>
                     <p>Consejos para construir una terraza en el techo de tu casa con los mejores materiales y ahorando dinero</p>
@@ -59,7 +32,7 @@
                 </picture>
             </div>
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="entrada.php">
                     <h4>Guia para la decoracion de tu hogar</h4>
                     <p>Escrito el . <span class="fecha">25/11/2021</span> por : <span class="fecha">Admin</span></p>
                     <p>Maximiza el espacio de tu hogar con esta guia, aprende a combinar muebles y colores para darle vida a tu lugar</p>
@@ -75,7 +48,7 @@
                 </picture>
             </div>
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="entrada.php">
                     <h4>Terraza en el techo de tu casa</h4>
                     <p>Escrito el . <span class="fecha">24/11/2022</span> por : <span class="fecha">Admin</span></p>
                     <p>Consejos para construir una terraza en el techo de tu casa con los mejores materiales y ahorando dinero</p>
@@ -91,7 +64,7 @@
                 </picture>
             </div>
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="entrada.php">
                     <h4>Guia para la decoracion de tu hogar</h4>
                     <p>Escrito el . <span class="fecha">25/11/2021</span> por : <span class="fecha">Admin</span></p>
                     <p>Maximiza el espacio de tu hogar con esta guia, aprende a combinar muebles y colores para darle vida a tu lugar</p>
@@ -103,22 +76,8 @@
 
 
    </main>
-   <footer class="footer seccion">
-        <div class="contenedor contenedor-footer">
-            <nav class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
-        </div>
-        <p class="copyright">Todos los derechos reservados-2022 &copy;</p>
-   </footer>
-    
 
 
-
-
-    <script src="./build/js/bundle.min.js"></script>
-</body>
-</html>
+<?php
+    incluirTemplate('footer');
+?>

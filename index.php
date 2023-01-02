@@ -1,37 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./build/css/app.css">
-    <title>Bienes Raices</title>
-</head>
-<body>
- <!-- COMIENZO DEL HEADER -->
-   <header class="header inicio">
-        <div class="contenedor contenido-header">
-            <div class="barra">
-                <a href="index.html">
-                    <img src="./build/img/logo.svg" alt="logo">
-                </a>
-                <div class="menu-hamburguesa">
-                    <img src="build/img/barras.svg" alt="Icono menu responsivo">
-                </div>
-                <div class="derecha">
-                    <img class="dark-mode-boton" src="./build/img/dark-mode.svg" alt="Icono dark mode">
-                        <nav class="navegacion">
-                            <a href="nosotros.html">Nosotros</a>
-                            <a href="anuncios.html">Anuncios</a>
-                            <a href="blog.html">Blog</a>
-                        <a href="contacto.html">Contacto</a>
-                        </nav>
-                </div>
-            </div><!--fin del nav-->
-            <h3>Ventas de casas y departamentos exclusivos de lujo</h3>
-        </div>
-   </header>  <!--fin de header-->
-   <main class="contenedor">
+<?php
+require './includes/funciones.php';
+
+incluirTemplate('header', $inicio = true);
+?>
+
+<main class="contenedor">
         <h3>Más sobre nosotros</h3>
         <div class="iconos-nosotros">
             <div class="icono">
@@ -80,7 +53,7 @@
                                     <p>3</p>
                                 </li><!--fin icono-->
                             </ul>
-                        <a href="anuncios.html" class="boton-amarillo-block">Ver propiedad</a>
+                        <a href="anuncios.php" class="boton-amarillo-block">Ver propiedad</a>
                  </div> <!--fin contenido anuncio-->
                 </div> <!--fin anuncio-->
                 <div class="anuncio">
@@ -150,7 +123,7 @@
    <section class="imagen-contacto">
           <h2>Encuentra la casa de tus sueños</h2>
              <p>Completa el formulario y un asesor se pondra en contacto contigo a la brevedad</p>
-                <a href="contacto.html" class="boton-amarillo">Contactanos</a>
+                <a href="contacto.php" class="boton-amarillo">Contactanos</a>
    </section>
 
    <!--COMIENZO DE BLOG-->
@@ -166,7 +139,7 @@
                     </picture>
                 </div>
                 <div class="texto-entrada">
-                    <a href="entrada.html">
+                    <a href="entrada.php">
                         <h4>Terraza en el techo de tu casa</h4>
                         <p>Escrito el . <span>24/11/2022</span> por : <span>Admin</span></p>
                         <p>Consejos para construir una terraza en el techo de tu casa con los mejores materiales y ahorando dinero</p>
@@ -182,7 +155,7 @@
                     </picture>
                 </div>
                 <div class="texto-entrada">
-                    <a href="entrada.html">
+                    <a href="entrada.php">
                         <h4>Guia para la decoracion de tu hogar</h4>
                         <p>Escrito el . <span>25/11/2021</span> por : <span>Admin</span></p>
                         <p>Maximiza el espacio de tu hogar con esta guia, aprende a combinar muebles y colores para darle vida a tu lugar</p>
@@ -202,17 +175,7 @@
         </section>
    </div>
 
-   <footer class="footer seccion">
-        <div class="contenedor contenedor-footer">
-            <nav class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
-        </div>
-        <p class="copyright">Todos los derechos reservados-2022 &copy;</p>
-   </footer>
-    <script src="./build/js/bundle.min.js"></script>
-</body>
-</html>
+
+<?php
+incluirTemplate('footer');
+?>
