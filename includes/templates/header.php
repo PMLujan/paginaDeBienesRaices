@@ -12,14 +12,14 @@
    <header class="header <?php echo $inicio ? 'inicio' : ''?>">
         <div class="contenedor contenido-header">
             <div class="barra">
-                <a href="./../../index.php">
-                    <img src="./build/img/logo.svg" alt="logo">
+                <a href="/../../index.php">
+                    <img src="/build/img/logo.svg" alt="logo">
                 </a>
                 <div class="menu-hamburguesa">
-                    <img src="build/img/barras.svg" alt="Icono menu responsivo">
+                    <img src="/build/img/barras.svg" alt="Icono menu responsivo">
                 </div>
                 <div class="derecha">
-                    <img class="dark-mode-boton" src="./build/img/dark-mode.svg" alt="Icono dark mode">
+                    <img class="dark-mode-boton" src="/build/img/dark-mode.svg" alt="Icono dark mode">
                         <nav class="navegacion">
                             <a href="nosotros.php">Nosotros</a>
                             <a href="anuncios.php">Anuncios</a>
