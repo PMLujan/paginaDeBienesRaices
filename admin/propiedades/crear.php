@@ -27,15 +27,29 @@ $vendedores_id= "";
 
 //ejecuta el codigo despues de que el usuario envie el formulario
  if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+    // echo "<pre>";
+    //     var_dump($_POST);
+    // echo "</pre>";
+
  
-    $titulo= $_POST['titulo'];
-    $precio= $_POST['precio'];
-    $descripcion= $_POST['descripcion'];
-    $habitaciones= $_POST['habitaciones'];
-    $baños= $_POST['baños'];
-    $estacionamiento= $_POST['estacionamiento'];
+    $titulo= mysqli_real_escape_string( $bd , $_POST['titulo'] );
+    $precio= mysqli_real_escape_string(  $bd ,$_POST['precio'] );
+    $descripcion= mysqli_real_escape_string( $bd , $_POST['descripcion'] );
+    $habitaciones= mysqli_real_escape_string( $bd , $_POST['habitaciones'] );
+    $baños= mysqli_real_escape_string( $bd , $_POST['baños'] );
+    $estacionamiento= mysqli_real_escape_string( $bd , $_POST['estacionamiento'] );
     $creado= date('Y/m/d');
-    $vendedores_id= $_POST['vendedor'];
+    $vendedores_id= mysqli_real_escape_string( $bd , $_POST['vendedor'] );
+
+    //asigno file a la variable
+
+    $imagen= $_FILES['imagen'];
+
+    echo "<pre>";
+        var_dump($imagen);
+    echo "</pre>";
+
 
     if(!$titulo){
         $errores[] = "Debes añadir un titulo";
@@ -55,6 +69,16 @@ $vendedores_id= "";
     if(!$vendedores_id){
         $errores[] = "Debes seleccionar un vendedor";
     }
+    if(!$imagen['name'] || $imagen['error']){
+        $errores[]="La imagen es obligatoria";
+    }
+    //validar imagenes pesadas:
+
+    $medida= 1000 * 100;
+
+    if($imagen['size'] > $medida){
+        $errores[] = 'La imagen es muy pesada';
+    }
 
     //revisar que el arreglo de errores este vacio
 
@@ -70,7 +94,9 @@ $vendedores_id= "";
         $resultado = mysqli_query($bd,$query);
 
         if($resultado){
-        echo 'Guardado correctamente';
+            //redireccionar a la pagina inicio
+
+            header('location: /admin');
         }
     }
 }
@@ -93,7 +119,7 @@ incluirTemplate('header');
             <?php endforeach; ?>
 
               <!-- formulario -->
-        <form class="formulario" method="POST" action="/admin/propiedades/crear.php">
+        <form class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
             <fieldset>
                 <legend>Información General</legend>
 
@@ -104,7 +130,7 @@ incluirTemplate('header');
                 <input type="number" id="precio" name="precio" placeholder="Precio propiedad" value="<?php echo $precio; ?>">
 
                 <label for="imagen">Imagen:</label>
-                <input type="file" id="imagen" accept="image/jpeg , image/png">
+                <input type="file" id="imagen" accept="image/jpeg , image/png " name="imagen">
 
                 <label for="descripcion">Descripción:</label>
                 <textarea id="descripcion" name="descripcion" cols="30" rows="10"><?php echo $descripcion; ?></textarea>
@@ -130,7 +156,8 @@ incluirTemplate('header');
 
                 <select name="vendedor">
                     <option value=""><-- Seleccione --></option>
-                    <!-- trae valor desde la bd  -->
+
+                    <!-- traer valor desde la bd  -->
 
                     <?php while( $vendedores = mysqli_fetch_assoc($resultado) ) : ?>
                         <option <?php echo $vendedores_id === $vendedores['id'] ? 'selected' : "" ; ?> value="<?php echo $vendedores['id']; ?>"> <?php echo $vendedores['nombre'] . " " . $vendedores['apellido']  ?> </option>
