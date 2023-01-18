@@ -46,9 +46,9 @@ $vendedores_id= "";
 
     $imagen= $_FILES['imagen'];
 
-    echo "<pre>";
-        var_dump($imagen);
-    echo "</pre>";
+    // echo "<pre>";
+    //     var_dump($imagen);
+    // echo "</pre>";
 
 
     if(!$titulo){
@@ -74,7 +74,7 @@ $vendedores_id= "";
     }
     //validar imagenes pesadas:
 
-    $medida= 1000 * 100;
+    $medida= 1000 * 1000;
 
     if($imagen['size'] > $medida){
         $errores[] = 'La imagen es muy pesada';
@@ -84,9 +84,26 @@ $vendedores_id= "";
 
     if(empty($errores)){
 
+    //crear carpeta imagenes
+
+        $carpetaImagenes='../../imagenes';
+
+    //validamos que no este creada
+        if(!is_dir($carpetaImagenes)){
+            mkdir($carpetaImagenes);
+        }
+
+    //crear nombres aleatorio a los archivos
+
+        $nombreImagen= md5( uniqid( rand(), true)) .".jpg";
+
+     //mover imagen de archivo temporal a carpeta imagen
+        move_uploaded_file($imagen['tmp_name'], $carpetaImagenes ."/". $nombreImagen);
+
+
     //insertar en la base de datos
 
-        $query=" INSERT INTO propiedades (titulo,precio,descripcion,habitaciones,baños,estacionamiento, creado ,vendedores_id) VALUES      ('$titulo','$precio', '$descripcion', '$habitaciones', '$baños', '$estacionamiento','$creado', '$vendedores_id')";
+        $query=" INSERT INTO propiedades (titulo,precio,imagen,descripcion,habitaciones,baños,estacionamiento, creado ,vendedores_id) VALUES ('$titulo','$precio','$nombreImagen', '$descripcion', '$habitaciones', '$baños', '$estacionamiento','$creado', '$vendedores_id')";
 
 
     //almacenar en BD
@@ -96,7 +113,7 @@ $vendedores_id= "";
         if($resultado){
             //redireccionar a la pagina inicio
 
-            header('location: /admin');
+            header('location: /admin?resultado=1');
         }
     }
 }
