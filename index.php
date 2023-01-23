@@ -27,16 +27,17 @@ incluirTemplate('header', $inicio = true);
 <!--Comienzo propiedades-->
    <section class="seccion contenedor" >
        <h3> Casas y departamentos en Ventas </h3>
-        <div class="contenedor-anuncio">
+   
         
             <?php 
-            include 'includes/templates/anuncios.php';
+                $limite= 3;
+                include 'includes/templates/anuncios.php';
             ?>
                
-        </div> <!--fin contenedor anuncio-->
+   
 
         <div class="alinear-derecha">
-            <a href="anuncios.html" class="boton-verde">Ver todas</a>
+            <a href="anuncios.php?id=<?php echo $propiedad['id']; ?>" class="boton-verde">Ver todas</a>
         </div>
 
    </section> <!--fin propiedades-->

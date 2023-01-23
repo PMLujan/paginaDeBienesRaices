@@ -57,7 +57,7 @@ $vendedores_id= "";
     if(!$precio){
         $errores[] = "Debes añadir un Precio";
     }
-    if( strlen($descripcion) < 50){
+    if( strlen($descripcion) < 15)
          $errores[] = "Debes añadir una descripción que contenga mas de 50 caracteres";
     }
     if(!$baños){
