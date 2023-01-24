@@ -116,7 +116,6 @@ $vendedores_id= "";
             header('location: /admin?resultado=1');
         }
     }
-}
 
 require '../../includes/funciones.php';
 

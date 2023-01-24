@@ -40,7 +40,7 @@ $resultados=mysqli_query($bd,$query);
                                     <p><?php echo $propiedad['estacionamiento']; ?></p>
                                 </li><!--fin icono-->
                             </ul>
-                        <a href="anuncios.php?id=<?php echo $propiedad['id']; ?>" class="boton-amarillo-block">Ver propiedad</a>
+                        <a href="anuncio.php?id=<?php echo $propiedad['id'];?>" class="boton-amarillo-block">Ver propiedad</a>
                  </div> <!--fin contenido anuncio-->
     </div> <!--fin anuncio-->
     <!-- finalizar iteracion  -->
