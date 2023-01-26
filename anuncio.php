@@ -8,11 +8,15 @@ $idUrl=$_GET['id'];
 $id=filter_var($idUrl,FILTER_VALIDATE_INT);
 
 if(!$id){
-    header('location: /admin');
+    header('location: /');
 }
 //instruccion
 $query= "SELECT * FROM propiedades WHERE id={$id}";
 $resultado= mysqli_query($db,$query);
+//validamos que reciba un resultado que existe en bd
+if($resultado->num_rows === 0){
+    header('location:/');
+}
 $propiedad=mysqli_fetch_assoc($resultado);
 
 require './includes/funciones.php';

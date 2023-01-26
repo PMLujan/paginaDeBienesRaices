@@ -15,7 +15,7 @@ $resultado= mysqli_query($bd,$consulta);
 
 $errores = [];
 
-//declaro las variables ara que guarde el valor al faltar datos en formulario
+//declaro las variables para que guarde el valor al faltar datos en formulario
 $titulo=  "";
 $precio= "" ;
 $descripcion= "" ;
@@ -28,11 +28,6 @@ $vendedores_id= "";
 //ejecuta el codigo despues de que el usuario envie el formulario
  if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    // echo "<pre>";
-    //     var_dump($_POST);
-    // echo "</pre>";
-
- 
     $titulo= mysqli_real_escape_string( $bd , $_POST['titulo'] );
     $precio= mysqli_real_escape_string(  $bd ,$_POST['precio'] );
     $descripcion= mysqli_real_escape_string( $bd , $_POST['descripcion'] );
@@ -70,7 +65,7 @@ $vendedores_id= "";
         $errores[] = "Debes seleccionar un vendedor";
     }
     if(!$imagen['name'] || $imagen['error']){
-        $errores[]="La imagen es obligatoria";
+        $errores[] ="La imagen es obligatoria";
     }
     //validar imagenes pesadas:
 
@@ -82,7 +77,7 @@ $vendedores_id= "";
 
     //revisar que el arreglo de errores este vacio
 
-    if(empty($errores)){
+    if( empty($errores)){
 
     //crear carpeta imagenes
 
@@ -103,7 +98,7 @@ $vendedores_id= "";
 
     //insertar en la base de datos
 
-        $query=" INSERT INTO propiedades (titulo,precio,imagen,descripcion,habitaciones,baños,estacionamiento, creado ,vendedores_id) VALUES ('$titulo','$precio','$nombreImagen', '$descripcion', '$habitaciones', '$baños', '$estacionamiento','$creado', '$vendedores_id')";
+        $query=" INSERT INTO propiedades (titulo,precio,imagen,descripcion,habitaciones,baños,estacionamiento, creado ,vendedores_id) VALUES ('$titulo',$precio,'$nombreImagen', '$descripcion', $habitaciones, $baños, $estacionamiento,'$creado', '$vendedores_id')";
 
 
     //almacenar en BD
@@ -117,10 +112,13 @@ $vendedores_id= "";
         }
     }
 
+
 require '../../includes/funciones.php';
 
 incluirTemplate('header');
 ?>
+
+
    <main class="contenedor seccion">
         <h3>Crear nueva propiedad</h3>
 
@@ -128,7 +126,7 @@ incluirTemplate('header');
             
             <!-- mostrar errores  -->
 
-            <?php foreach($errores as $error) : ?>
+            <?php foreach($errores as $error): ?>
                 <div class="alerta error">
                     <?php echo $error; ?>
                 </div>
