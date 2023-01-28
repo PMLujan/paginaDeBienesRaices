@@ -1,4 +1,16 @@
 <?php
+
+//inicio de sesión
+
+require '../../includes/funciones.php';
+
+//para proteger las paginas si no esta autenticado no puede verlas
+$auth= estaAutenticado();
+
+if(!$auth){
+    header('location: /');
+}
+
 //validar que en url recibimos un ID:
 
 $idUrl= $_GET['id'];
@@ -137,8 +149,6 @@ $imagen= $propiedad['imagen'];
     }
 }
 
-
-require '../../includes/funciones.php';
 
 incluirTemplate('header');
 ?>

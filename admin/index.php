@@ -1,4 +1,14 @@
 <?php
+//inicio de sesión
+
+require '../includes/funciones.php';
+
+//para proteger las paginas si no esta autenticado no puede verlas
+$auth= estaAutenticado();
+
+if(!$auth){
+    header('location: /');
+}
 
 //importar bd
 require '../includes/configuracion/database.php';
@@ -42,7 +52,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
 //incluir un template:
-require '../includes/funciones.php';
 
 incluirTemplate('header');
 ?>

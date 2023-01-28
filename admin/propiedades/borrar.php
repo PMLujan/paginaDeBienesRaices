@@ -1,5 +1,14 @@
 <?php
+//inicio de sesión
+
 require '../../includes/funciones.php';
+
+//para proteger las paginas si no esta autenticado no puede verlas
+$auth= estaAutenticado();
+
+if(!$auth){
+    header('location: /');
+}
 
 incluirTemplate('header');
 ?>

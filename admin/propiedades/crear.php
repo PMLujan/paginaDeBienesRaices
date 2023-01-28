@@ -1,5 +1,16 @@
 <?php
 
+//inicio de sesión
+
+require '../../includes/funciones.php';
+
+//para proteger las paginas si no esta autenticado no puede verlas
+$auth= estaAutenticado();
+
+if(!$auth){
+    header('location: /');
+}
+
 //base de datos 
 require '../../includes/configuracion/database.php';
 
@@ -112,8 +123,6 @@ $vendedores_id= "";
         }
     }
 
-
-require '../../includes/funciones.php';
 
 incluirTemplate('header');
 ?>
