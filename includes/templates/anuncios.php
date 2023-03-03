@@ -1,6 +1,6 @@
 <?php
 //importar bd
-require 'includes/configuracion/database.php';
+// require 'includes/configuracion/database.php'; //esta importada desde app.php
 
 $bd= conectandoBD();
 
