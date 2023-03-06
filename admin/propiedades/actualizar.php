@@ -3,6 +3,7 @@
 //inicio de sesión
 
 use App\Propiedad;
+use App\Vendedores;
 
 use Intervention\Image\ImageManagerStatic as Image; //le colocamos un alias para no escribir todo el nombre
 
@@ -21,12 +22,9 @@ if(!$id){ //si no recibe un numero lo redirecciona
 
 $propiedad= Propiedad::find($id);
 
+
 //consultar para obtener los vendedores
-
-$consulta = 'SELECT * FROM vendedores';
-$resultado= mysqli_query($bd,$consulta);
-
-
+$vendedores= Vendedores::all();
 //arreglo con msjs de errores
 
 $errores = Propiedad::getErrores();
@@ -58,6 +56,10 @@ $errores = Propiedad::getErrores();
     $carpetaImagenes='../../imagenes/';
         
     if(empty($errores)){ 
+        //si hay una nueva imagen -guardala
+        if($_FILES['propiedad']['tmp_name']['imagen']){
+            $imagen->save(CARPETA_IMAGENES.$nombreImagen);
+        }
         
           //almacenar en BD
           $propiedad->guardar();

@@ -41,11 +41,15 @@
             <fieldset>
                 <legend>Vendedor</legend>
 
-                <select>
-                    <option value=""><-- Seleccione --></option>
-                    <option value="1">juan Perez </option>
-                    <option value="2">Laura fernandez</option>
-                    <option value="3">valeria Lopez</option>
+                <select name="propiedad[vendedores_id]">
+
+                    <option selected value =" ">--Seleccione un vendedor--</option>
+                <?php foreach($vendedores as $vendedor) { ?>
+                    <!-- Deja guardado en el formulario la opcion elegida / itera y muestra los vendedores -->
+                    <option  value="<?php echo $vendedor->id ; ?>"><?php echo s($vendedor->nombre) ." ". s($vendedor->apellido) ?></option>
+
+                <?php } ; ?>
+                    
                 </select>
 
             </fieldset>

@@ -5,26 +5,17 @@
 require '../../includes/app.php';
 
 use App\Propiedad;
+use App\Vendedores;
 //validar imagenes
 use Intervention\Image\ImageManagerStatic as Image; //le colocamos un alias para no escribir todo el nombre
 
 //para proteger las paginas si no esta autenticado no puede verlas
 $auth= estaAutenticado();
 
-if(!$auth){
-    header('location: /');
-}
+$propiedad = new Propiedad;
 
-//base de datos 
-// require '../../includes/configuracion/database.php';
-
-$bd=  conectandoBD();
-
-//consultar para obtener los vendedores
-
-$consulta = 'SELECT * FROM vendedores';
-$resultado= mysqli_query($bd,$consulta);
-
+//cosulta para obtener todos los vendedores
+$vendedores= Vendedores::all();
 
 //arreglo con msjs de errores
 

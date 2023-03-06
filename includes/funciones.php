@@ -37,3 +37,11 @@ function s($html){
 
     return $s;
 }
+
+//funcion para mostrar tipo de formulario a eliminar
+
+function validarTipoDeContenido($tipo){
+    $tipos=['vendedor','propiedad'];
+
+    return in_array($tipo,$tipos);// busca un string en un arreglo -1ro recibe el string y despues el arreglo donde lo va a buscar
+}

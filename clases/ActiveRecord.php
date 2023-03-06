@@ -81,7 +81,7 @@ class ActiveRecord {
         public function eliminar(){
     
             //eliminar propiedad
-            $query="DELETE FROM" . static::$tabla . " WHERE id=". self::$bd->escape_string($this->id);
+            $query="DELETE FROM " . static::$tabla . " WHERE id=". self::$bd->escape_string($this->id);
     
             $resultado= self::$bd->query($query);
             if($resultado){
@@ -95,7 +95,7 @@ class ActiveRecord {
     
         public function atributos(){
                     $atributos =[]; //voy a mapear las columnas de la BD
-                    foreach( self::$columnasBD as $columna){  //uso self porque es un atributo estatico-> la variable columna va iterar en cada columna de la BD 
+                    foreach( static::$columnasBD as $columna){  //uso self porque es un atributo estatico-> la variable columna va iterar en cada columna de la BD 
                         if($columna === 'id') continue;   // cuando el id no tiene valor el continue hace que se siga ejecuntando el codigo lo ignora
                         $atributos[$columna] = $this->$columna;  // atributo en la posicion de columna va ser igua al el objeto(columnaDB en este caso) en posicion de columna
                     }     
@@ -140,39 +140,17 @@ class ActiveRecord {
          //validacion
     
          public static function getErrores(){
-                return self::$errores;
+                return static::$errores;
     
             }
+
+            public function validar(){
+                static::$errores= [];
+                return static::$errores;
+       }
+   
+
         
-        public function validar(){
-    
-                 if(!$this->titulo){
-                    self::$errores[] = "Debes añadir un titulo";
-                    }
-                    if(!$this->precio){
-                     self::$errores[] = "Debes añadir un Precio";
-                    }
-                    if( strlen($this->descripcion) < 15){
-                        self::$errores[] = "Debes añadir una descripción que contenga mas de 15 caracteres";
-                    }
-                    if(!$this->habitaciones){
-                        self::$errores[] = "Debe añadir la cantidad de habitaciones";
-                    }
-                    if(!$this->baños){
-                        self::$errores[] = "Debes añadir cantidad de baños";
-                    }
-                    if(!$this->estacionamiento){
-                        self::$errores[] = "Debes añadir cantidad de estacionamientos";
-                    }
-                    if(!$this->vendedores_id){
-                        self::$errores[] = "Debes seleccionar un vendedor";
-                    }
-                    if(!$this->imagen){
-                        self::$errores[] ="La imagen es obligatoria";
-                    }
-           return self::$errores;
-        }
-    
         //metodo para mostrar todas las propiedades
     
         public static function all(){
@@ -188,11 +166,11 @@ class ActiveRecord {
         //metodo mostra propiedad por id
     
         public static function find($id){
-                    $query= "SELECT * FROM" . static::$tabla . " WHERE id = $id";
+                    $query= "SELECT * FROM " . static::$tabla . " WHERE id = $id";
     
                     $resultado= self::consultaSql($query);
-    
-            return array_shift($resultado); //funcion que retorna la primer posicion de un arreglo
+                    
+            return array_shift($resultado); //funcion que devuelve la primer posicion de un arreglo
         }
     
         public static function consultaSql($query){
@@ -202,7 +180,7 @@ class ActiveRecord {
                    //iterar los resultados
                     $array=[];
                     while($registro = $resultado->fetch_assoc()){  //como fetch asocc devuelve un array y los principios de active record indican que tiene que ser un objeto tenemos que pasar ese array a objeto
-                        $array[]=self::crearObjeto($registro);
+                        $array[]=static::crearObjeto($registro);
                     }
     
             //liberar la memoria

@@ -7,7 +7,6 @@ require __DIR__ . '/../vendor/autoload.php';
 // conectar BD 
 $bd= conectandoBD();
 
-use App\Propiedad;
+use App\ActiveRecord;
 
-
-Propiedad::setBD($bd);
+ActiveRecord::setBD($bd);
