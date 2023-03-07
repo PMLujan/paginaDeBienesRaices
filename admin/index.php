@@ -48,17 +48,11 @@ incluirTemplate('header');
 
    <main class="contenedor">
         <h3>Administrador de Bienes Raices</h3>
-
-  <?php if($resultado == 1): ?>
-     
-    <p class="alerta verde">Creado Correctamente</p>
-  <?php elseif($resultado == 2): ?>
-
-    <p class="alerta verde">Actualizado  Correctamente</p>
-    <?php elseif($resultado == 3): ?>
-
-        <p class="alerta rojo">Eliminado Correctamente</p>
-  <?php endif; ?>
+        <?php
+        $mensaje=mostrarNotifiacion( intval($resultado) );//intval transforma el string en entero
+        if($mensaje) { ?>
+        <p class="alerta verde"><?php echo s($mensaje) ; ?></p>
+          <?php }?>
 
         <a href="/admin/propiedades/crear.php" class="boton boton-verde">Nueva propiedad</a>
         <a href="/admin/vendedores/crear.php" class="boton boton-amarillo">Nuevo Vendedor</a>

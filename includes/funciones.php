@@ -45,3 +45,25 @@ function validarTipoDeContenido($tipo){
 
     return in_array($tipo,$tipos);// busca un string en un arreglo -1ro recibe el string y despues el arreglo donde lo va a buscar
 }
+
+//mostrar notificaciones 
+
+function mostrarNotifiacion($codigo){
+    $mensaje='';
+
+    switch($codigo){
+        case 1:
+            $mensaje="Creado Correctamente";
+            break;
+        case 2:
+             $mensaje="Actualizado  Correctamente";
+             break;
+        case 3:
+             $mensaje="Eliminado Correctamente";
+            break;
+        default:
+            $mensaje= false;
+             break; 
+    }
+    return $mensaje;
+}
