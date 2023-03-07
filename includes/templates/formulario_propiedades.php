@@ -43,8 +43,8 @@
 
                 <select name="propiedad[vendedores_id]">
 
-                    <option selected value =" ">--Seleccione un vendedor--</option>
-                <?php foreach($vendedores as $vendedor) { ?>
+                    <option selected value ="">--Seleccione un vendedor--</option>
+                <?php foreach($vendedores as $vendedor){ ?>
                     <!-- Deja guardado en el formulario la opcion elegida / itera y muestra los vendedores -->
                     <option  value="<?php echo $vendedor->id ; ?>"><?php echo s($vendedor->nombre) ." ". s($vendedor->apellido) ?></option>
 

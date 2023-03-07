@@ -13,6 +13,9 @@ class ActiveRecord {
                 //validacion
     
                 protected static $errores= [];
+
+                // public $id;
+                // public $imagen;
     
                 //metodo 
                 //conectar a la base de datos

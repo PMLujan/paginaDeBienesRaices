@@ -37,7 +37,7 @@ $errores = Propiedad::getErrores();
 
     $propiedad->sincronizar($args);
 
-    $errores=$propiedad->validar();
+    $errores= $propiedad->validar();
 
     //crear nombres aleatorio a los archivos
     $nombreImagen= md5( uniqid( rand(), true)) .".jpg";

@@ -40,3 +40,4 @@ class Vendedores extends ActiveRecord {
                  }            
 
 }
+?>
